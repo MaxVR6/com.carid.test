@@ -32,30 +32,18 @@ public class cartStep extends BaseUtil{
     public void iCheckPresentMMYInDescription() throws Throwable{
         cartPage page = new cartPage(base.Driver);
         page.checkDescription();
-
-
     }
 
     @And("^I check QTY main item in cart$")
     public void iCheckQTYMainItemInCart() throws InterruptedException {
         cartPage page = new cartPage(base.Driver);
         page.checkQTY();
-//        WebElement options = base.Driver.findElement(By.xpath("//*[@id=\"scrollfix\"]/div/div/main/div[3]/div[2]/div[1]/form/div[2]/div[1]/div[2]/div/div/select"));
-//        Select qty = new Select(options);
-//        WebElement gtyFirst = qty.getFirstSelectedOption();
-//        System.out.println("after selest qty is: " +gtyFirst.getText());
-//
-//        String ActualQTY = gtyFirst.getText();
-//        System.out.println("Actual QTY main item= "+ActualQTY);
-//        String ExpectedQTY = "1";
-//        Assert.assertEquals(ExpectedQTY, ActualQTY);
     }
 
     @Then("^I check QTY second item in cart$")
     public void iCheckQTYSecondItemInCart() throws InterruptedException {
         cartPage page = new cartPage(base.Driver);
         page.checkSecondQTY();
-
     }
 
     @And("^I change QTY main item in cart$")

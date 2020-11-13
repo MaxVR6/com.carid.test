@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.Select;
 import static java.lang.Thread.sleep;
 import static org.junit.Assert.fail;
 
-//import Steps.changeQtYmainItemSteep;
-
 public class cartPage {
     public cartPage(WebDriver driver) {
         PageFactory.initElements(driver, this);}
@@ -59,6 +57,7 @@ public class cartPage {
         }
 
     }
+
     public void checkQTY() throws InterruptedException {
         WebElement options = select;
         Select qty = new Select(options);

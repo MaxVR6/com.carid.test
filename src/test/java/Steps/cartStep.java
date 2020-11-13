@@ -1,23 +1,17 @@
 package Steps;
 
 import Base.BaseUtil;
-import com.google.common.base.Function;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.cartPage;
 
-import java.time.Duration;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
+//import org.openqa.selenium.support.ui.Select;
 
 public class cartStep extends BaseUtil{
     private BaseUtil base;
@@ -44,14 +38,17 @@ public class cartStep extends BaseUtil{
 
     @And("^I check QTY main item in cart$")
     public void iCheckQTYMainItemInCart() throws InterruptedException {
-//*[@id="scrollfix"]/div/div/main/div[3]/div[2]/div[1]/form/div[2]/div[1]/div[2]/div/div/select/option[8]
-
-        WebElement select = base.Driver.findElement(By.cssSelector(".form-field.-select>select"));
-        String activSelect = select.getAttribute("option selected value");
-        String activSelect2 = select.getTagName();
-        System.out.println("active: "+ activSelect);
-        System.out.println("active2: "+ activSelect2);
-
+        cartPage page = new cartPage(base.Driver);
+        page.checkQTY();
+//        WebElement options = base.Driver.findElement(By.xpath("//*[@id=\"scrollfix\"]/div/div/main/div[3]/div[2]/div[1]/form/div[2]/div[1]/div[2]/div/div/select"));
+//        Select qty = new Select(options);
+//        WebElement gtyFirst = qty.getFirstSelectedOption();
+//        System.out.println("after selest qty is: " +gtyFirst.getText());
+//
+//        String ActualQTY = gtyFirst.getText();
+//        System.out.println("Actual QTY main item= "+ActualQTY);
+//        String ExpectedQTY = "1";
+//        Assert.assertEquals(ExpectedQTY, ActualQTY);
     }
 
     @Then("^I check QTY second item in cart$")
@@ -86,6 +83,5 @@ public class cartStep extends BaseUtil{
     public void iCheckCartIsEmpty() throws InterruptedException {
         cartPage page = new cartPage(base.Driver);
         page.checkEmptyCart();
-
     }
 }

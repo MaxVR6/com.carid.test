@@ -1,25 +1,17 @@
 package pages;
 
-import Base.BaseUtil;
-//import Steps.changeQtYmainItemSteep;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.util.concurrent.TimeUnit;
-
-import java.sql.Driver;
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.Select;
 
 import static java.lang.Thread.sleep;
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.fail;
+
+//import Steps.changeQtYmainItemSteep;
 
 public class cartPage {
     public cartPage(WebDriver driver) {
@@ -67,10 +59,21 @@ public class cartPage {
         }
 
     }
+    public void checkQTY() throws InterruptedException {
+        WebElement options = select;
+        Select qty = new Select(options);
+        WebElement gtyFirst = qty.getFirstSelectedOption();
+        System.out.println("after selest qty is: " + gtyFirst.getText());
+
+        String ActualQTY = gtyFirst.getText();
+        System.out.println("Actual QTY main item= " + ActualQTY);
+        String ExpectedQTY = "1";
+        Assert.assertEquals(ExpectedQTY, ActualQTY);
+    }
 
     public void checkSecondQTY() throws InterruptedException {
         String ActualQTY = secQTY.getText();
-        System.out.println("Actual QTY = "+ActualQTY);
+        System.out.println("Actual QTY second item = "+ActualQTY);
         String ExpectedQTY = "1";
         Assert.assertEquals(ExpectedQTY, ActualQTY);
 
@@ -78,11 +81,21 @@ public class cartPage {
 
     public void changeQTYitem() throws InterruptedException {
         select.sendKeys("3");
+        //select.sendKeys(Keys.ENTER);
+        sleep(100);
+        WebElement options = select;
+        Select qty = new Select(options);
+        WebElement gtyFirst = qty.getFirstSelectedOption();
+
+        String ActualQTY = gtyFirst.getText();
+        System.out.println("Actual QTY main item after change = "+ActualQTY);
+        String ExpectedQTY = "3";
+        Assert.assertEquals(ExpectedQTY, ActualQTY);
     }
 
     public void checkSecQTYchange() throws InterruptedException {
         String ActualQTY = secQTYchange.getText();
-        System.out.println("Actual QTY = "+ActualQTY);
+        System.out.println("Actual QTY second item after change = "+ActualQTY);
         String ExpectedQTY = "3";
         Assert.assertEquals(ExpectedQTY, ActualQTY);
     }

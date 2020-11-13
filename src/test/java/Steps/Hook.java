@@ -33,4 +33,5 @@ public class Hook extends BaseUtil {
         base.Driver.quit();
         System.out.println("Close the browser");
     }
+    
 }

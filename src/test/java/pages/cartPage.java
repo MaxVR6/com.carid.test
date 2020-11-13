@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +24,6 @@ import static org.junit.Assert.fail;
 public class cartPage {
     public cartPage(WebDriver driver) {
         PageFactory.initElements(driver, this);}
-    WebDriver Driver;
 
     @FindBy(how = How.CSS, using = ".cart_prod_name")
     public WebElement nameItemInCart;
@@ -81,18 +81,15 @@ public class cartPage {
     }
 
     public void checkSecQTYchange() throws InterruptedException {
-               //sleep(1000);
         String ActualQTY = secQTYchange.getText();
         System.out.println("Actual QTY = "+ActualQTY);
         String ExpectedQTY = "3";
         Assert.assertEquals(ExpectedQTY, ActualQTY);
-
     }
 
     public void delete() throws InterruptedException {
         cnDelete.click();
         del.click();
-
     }
 
     public void checkEmptyCart() throws InterruptedException {

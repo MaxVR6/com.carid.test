@@ -5,7 +5,6 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Hook extends BaseUtil {
     private BaseUtil base;
@@ -22,7 +21,6 @@ public class Hook extends BaseUtil {
         base.Driver = new ChromeDriver();
         //base.Driver = new FirefoxDriver();
         base.Driver.manage().window().maximize();
-
     }
 
     @After
@@ -32,6 +30,7 @@ public class Hook extends BaseUtil {
         {
             System.out.println(scenario.getName());
         }
+        base.Driver.quit();
         System.out.println("Close the browser");
     }
 }
